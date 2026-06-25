@@ -1,0 +1,16 @@
+{
+  "name": "Absorbance Adjuster",
+  "short_name": "Abs Adjust",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#eef5f2",
+  "theme_color": "#175c62",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

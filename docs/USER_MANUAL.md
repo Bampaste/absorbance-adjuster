@@ -4,6 +4,16 @@
 
 Absorbance Adjuster helps during sample absorbance adjustment. It calculates how much solvent or raw suspension may be needed, keeps records for multiple samples, and generates final experiment-note text.
 
+## Versions
+
+Laptop browser version:
+
+Open `laptop-version/index.html` directly in Chrome, Edge, or another modern browser. This version does not need a server and is useful for checking the app on a laptop.
+
+Android version:
+
+Build or install the Android APK. It uses the same app files inside an Android WebView, so the calculation and logging behavior should match the laptop version.
+
 ## Main Fields
 
 `Sample No.`

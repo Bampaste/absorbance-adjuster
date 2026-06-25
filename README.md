@@ -2,7 +2,7 @@
 
 ![Absorbance Adjuster icon](docs/icon-preview.png)
 
-Absorbance Adjuster is a small Android WebView app for adjusting sample absorbance during spectroscopy experiments. It helps calculate whether to add solvent or raw suspension, records adjustment operations by sample number, and generates copy-ready experiment-note descriptions.
+Absorbance Adjuster is a small offline app for adjusting sample absorbance during spectroscopy experiments. It is available as both a direct-open laptop browser version and an Android WebView app. It helps calculate whether to add solvent or raw suspension, records adjustment operations by sample number, and generates copy-ready experiment-note descriptions.
 
 The app is designed for lab use cases where the calculated volume may not be the exact volume actually pipetted. Manual volume edits are treated as the real sample state when a step is logged.
 
@@ -15,7 +15,8 @@ The app is designed for lab use cases where the calculated volume may not be the
 - Generate final conduction descriptions for all logged samples.
 - Copy final descriptions directly into experiment notes.
 - Support `uL` and `mL` volume units.
-- Android APK wrapper around an offline HTML/CSS/JavaScript app.
+- Laptop version that opens directly from `laptop-version/index.html`.
+- Android APK wrapper around the same offline HTML/CSS/JavaScript app.
 
 ## App Workflow
 
@@ -35,14 +36,30 @@ The app is designed for lab use cases where the calculated volume may not be the
 
 See [docs/USER_MANUAL.md](docs/USER_MANUAL.md) for a more detailed guide.
 
+## Use On Laptop
+
+Open this file directly in a browser:
+
+```text
+laptop-version/index.html
+```
+
+No server is required. This version is useful for checking the app on a laptop before building or installing the Android APK.
+
 ## Project Structure
 
 ```text
-app/src/main/assets/
-  index.html              Web app UI
+laptop-version/
+  index.html              Direct-open laptop app
   app.js                  Calculation, logging, and description logic
   styles.css              App styling
   icon.svg                Web/PWA icon
+
+app/src/main/assets/
+  index.html              Android WebView copy of the web app UI
+  app.js                  Android WebView copy of the app logic
+  styles.css              Android WebView copy of the app styling
+  icon.svg                Android WebView copy of the web/PWA icon
 
 app/src/main/java/
   MainActivity.java       Android WebView wrapper
