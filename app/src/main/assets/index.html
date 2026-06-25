@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#175c62">
+  <title>Absorbance Adjuster</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="panel">
+      <header>
+        <p class="eyebrow">Water suspension dilution helper</p>
+        <h1>Absorbance Adjuster</h1>
+      </header>
+
+      <section class="note-setup" aria-labelledby="noteSetupTitle">
+        <h2 id="noteSetupTitle">Sample note setup</h2>
+        <div class="field-grid">
+          <label>
+            Sample No.
+            <input id="sampleId" type="text" placeholder="e.g. S1">
+          </label>
+
+          <label>
+            Solvent
+            <input id="solvent" type="text" placeholder="e.g. water" value="water">
+          </label>
+
+          <label>
+            Sample volume
+            <div class="with-unit">
+              <input id="sampleVol" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 20">
+              <select id="sampleUnit" aria-label="Sample volume unit">
+                <option value="mL">mL</option>
+                <option value="uL" selected>uL</option>
+              </select>
+            </div>
+          </label>
+
+          <label>
+            Solvent already present
+            <div class="with-unit">
+              <input id="startingSolventVol" type="number" inputmode="decimal" min="0" step="any" placeholder="optional">
+              <select id="startingSolventUnit" aria-label="Solvent already present unit">
+                <option value="mL">mL</option>
+                <option value="uL" selected>uL</option>
+              </select>
+            </div>
+          </label>
+
+          <label>
+            Excitation wavelength
+            <div class="with-suffix">
+              <input id="wavelength" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 365">
+              <span>nm</span>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <form id="calculator" novalidate>
+        <label>
+          Current absorbance
+          <div class="with-suffix">
+            <input id="currentAbs" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 0.8" required>
+            <span>Abs</span>
+          </div>
+        </label>
+
+        <label>
+          Target absorbance
+          <div class="with-suffix">
+            <input id="targetAbs" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 0.5" required>
+            <span>Abs</span>
+          </div>
+        </label>
+
+        <label>
+          Current volume in cuvette
+          <div class="with-unit">
+            <input id="currentVol" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 2.0" required>
+            <select id="unit" aria-label="Volume unit">
+              <option value="mL">mL</option>
+              <option value="uL" selected>uL</option>
+            </select>
+          </div>
+        </label>
+
+        <label>
+          Raw suspension adding volume
+          <div class="with-unit">
+            <input id="stockVol" type="number" inputmode="decimal" min="0" step="any" placeholder="Only needed if too dilute">
+            <select id="stockUnit" aria-label="Raw suspension adding volume unit">
+              <option value="mL">mL</option>
+              <option value="uL" selected>uL</option>
+            </select>
+          </div>
+        </label>
+
+        <details>
+          <summary>Optional cuvette limit</summary>
+          <label>
+            Maximum final volume
+            <div class="with-suffix">
+              <input id="maxVol" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 3.5">
+              <span class="volume-unit-label">uL</span>
+            </div>
+          </label>
+        </details>
+
+        <div class="button-row">
+          <button type="submit">Calculate</button>
+          <button id="applyResult" class="secondary-button" type="button" disabled>Add into sample</button>
+        </div>
+      </form>
+
+      <section id="result" class="result" aria-live="polite">
+        Enter your measured absorbance and target.
+      </section>
+
+      <section class="record-panel" aria-labelledby="recordTitle">
+        <div class="section-heading">
+          <h2 id="recordTitle">Operation record</h2>
+          <button id="logOperation" class="secondary-button" type="button" disabled>Log step</button>
+        </div>
+        <div id="operationList" class="operation-list">
+          No operation logged yet.
+        </div>
+        <div class="button-row">
+          <button id="clearRecord" class="secondary-button" type="button">Clear current sample</button>
+          <button id="clearAllRecords" class="secondary-button" type="button">Clear all</button>
+        </div>
+      </section>
+
+      <section class="record-panel" aria-labelledby="descriptionTitle">
+        <div class="section-heading">
+          <h2 id="descriptionTitle">Final conduction description</h2>
+          <button id="generateDescription" class="secondary-button" type="button">Generate</button>
+        </div>
+        <textarea id="finalDescription" rows="4" readonly placeholder="Generate a copy-ready note after logging your adjustment steps."></textarea>
+        <button id="copyDescription" type="button">Copy description</button>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
