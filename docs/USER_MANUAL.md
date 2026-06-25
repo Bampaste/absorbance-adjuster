@@ -6,13 +6,13 @@ Absorbance Adjuster helps during sample absorbance adjustment. It calculates how
 
 ## Versions
 
-Laptop browser version:
+PC browser version:
 
-Open `laptop-version/index.html` directly in Chrome, Edge, or another modern browser. This version does not need a server and is useful for checking the app on a laptop.
+Open `pc-version/index.html` directly in Chrome, Edge, or another modern browser. This version does not need a server and is useful for checking the app on a computer.
 
 Android version:
 
-Build or install the Android APK. It uses the same app files inside an Android WebView, so the calculation and logging behavior should match the laptop version.
+Build or install the Android APK. It uses the same app files inside an Android WebView, so the calculation and logging behavior should match the PC browser version.
 
 ## Main Fields
 
